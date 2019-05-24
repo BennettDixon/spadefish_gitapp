@@ -46,10 +46,10 @@ server {
 	}
 
 	location /login {
-		proxy_pass http://0.0.0.0:5005/login;
+		proxy_pass http://api/login;
 	}
 
 	location /logout {
-		proxy_pass http://0.0.0.0:5005/logout;
+		proxy_pass http://api/logout;
 	}
 }
