@@ -10,7 +10,6 @@
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script type="text/javascript" src="lib/main.js"></script>
-    <script type="text/javascript" src="lib/card.js"></script>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <!-- Bulma CSS -->
@@ -36,8 +35,8 @@
             <!-- Top right home/about tabs -->
             <div id="navbarMenuHeroC" class="navbar-menu">
               <div class="navbar-end">
-                <a href="index.html" class="navbar-item is-vcentered is-active">Home</a>
-                <a href="about.html" class="navbar-item is-vcentered">About</a>
+                <a href="index.html" class="navbar-item is-vcentered">Home</a>
+                <a href="about.html" class="navbar-item is-vcentered is-active">About</a>
               </div>
             </div>
 
@@ -47,33 +46,67 @@
 
       <!-- Center content -->
       <div class="hero-body">
-        <div class="container has-text-centered"> 
-          <div class="column is-two-fifths is-offset-one-quarter">
-	    <div class="card">
-              <div class="card-header">
-                <div class="card-image has-text-centered">
-                  
-                </div>
-                <p class="card-header-title">
-                  Let's get swimming
-                </p>
+        <div class="container">
+
+          <!-- Tiles -->
+          <div class="columns is-centered">
+            <div class="tile is-ancestor">
+
+              <!-- Left tiles -->
+              <div class="tile is-parent is-vertical">
+
+                <!-- Top left tile -->
+                <article class="tile is-child notification is-warning">
+                  <h6 class="title is-6 has-text-grey-dark">
+                    Er, what is this?
+                  </h6>
+                  <div class="content">
+                    Thanks for asking! Spadefish is a GitHub account programming language feature. 🐟
+                  </div>
+                </article>
+
+                <!-- Bottom left tile -->
+                <article class="tile is-child notification is-warning">
+                  <h6 class="title is-6 has-text-grey-dark">
+                    How does this work?
+                  </h6>
+                  <div class="content">
+                    Ah, inquisitiveness, love it ❤️. When you hit the login button, we authorize your information with Oauth and send a request to the GitHub API. We then pull out your programming language usage statistics and use <a href="https://d3js.org/" target="_blank" aria-label="Link to D3.js">D3.js</a> to visualize that awesome bar chart.
+                  </div>
+                </article>
+
               </div>
-              <div class="card-content">
-		<object class="image is-32x32"
-                        data="frontend/logo_vector.svg"
-                        type="svg+xml"></object>
-		<h1><strong>spadefish</strong></h1>
-                <div class="bar-chart">
-                  <svg />
-                </div>
+
+              <!-- Right tiles -->
+              <div class="tile is-parent is-vertical">
+
+                <!-- Top right tile -->
+                <article class="tile is-child notification is-warning">
+                  <h6 class="title is-6 has-text-grey-dark">
+                    Come on. I don't even think that's a thing.
+                  </h6>
+                  <div class="content">
+                    Alright, we might have made it up 😅. To be more specific, spadefish pulls statistics about programming language usage from your GitHub account and displays a pretty chart visualizing your skillset. Copy and paste to your portfolio to show off your multilingualism!
+                  </div>
+                </article>
+
+                <!-- Bottom right tile -->
+                <article class="tile is-child notification is-warning">
+                  <h6 class="title is-6 has-text-grey-dark">
+                    This website is gorgeous. What is it designed with?
+                  </h6>
+                  <div class="content">
+                    You're too kind! Spadefish was designed with Bulma CSS, an awesome new CSS framework based on Flexbox 😊. <a href="https://bulma.io" target="_blank" aria-label="Link to Bulma CSS">Check it out!</a>
+                  </div>
+                </article>
+
               </div>
-              <div class="card-footer">
-                <div class="card-footer-item">
-                  <button class="button loginout" id="login">Login</button>
-                </div>
-              </div>
+
             </div>
           </div>
+
+        </div>
+      </div>
 
       <!-- Bottom footer bar -->
       <div class="hero-foot">
@@ -128,6 +161,6 @@
       </div>
 
     </section>
-  </body>
 
+  </body>
 </html>
