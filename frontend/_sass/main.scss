@@ -2,8 +2,25 @@
 
 @import "../node_modules/bulma/sass/utilities/initial-variables";
 
-//$family-sans-serif: "Helvetica", "Arial", sans-serif;
+/* Site font */
+$family-sans-serif: "Verdana", sans-serif;
 
+/* Site colors */
+$grey: #ccc;
 $primary: #3a99ad;
+$warning: #f8ffd9;
 
 @import "../node_modules/bulma/bulma";
+
+/* Centering bottom left footer statement in line with button row */
+.hero-foot > div > div {
+    margin-top: 6.5px;
+}
+.hero-foot .columns {
+    margin: 0 auto;
+}
+
+/* Underlining about tile titles */
+h6.title {
+    text-decoration: underline;
+}
