@@ -62,7 +62,7 @@ const login = () => {
     });
   }
 
-  verify().then(() => {
+  verify().then(verify().then(() => {
     $.get('/api/v1/me', (data) => {
       // $('div.card-content').append('<div class="bar-chart" style="width:1000px; height:600px; margin: auto; background-color: #3A99AD;"><svg style="width: 100%; height: 100%;"/></div>');
       // barChart()
@@ -72,7 +72,7 @@ const login = () => {
       $('p.card-header-title').text(`${data.g_login}`);
       $('h5#sentence').text('Look at you, you polyglot! 🎏');
     });
-  });
+  }));
 };
 
 const logout = () => {
