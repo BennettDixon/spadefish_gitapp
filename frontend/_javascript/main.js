@@ -4,7 +4,7 @@ const login = () => {
   async function verify() {
     $.get('/status', (response) => {
       if (!response.status) {
-        $('location').attr('href', '/login');
+        $(location).attr('href', '/login');
       }
     });
   }
