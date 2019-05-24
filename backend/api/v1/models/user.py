@@ -5,7 +5,9 @@ Define class User
 
 from backend.api.v1.models.BaseModel import BaseModel
 from backend.api.v1.models.repo import Repo
-import requests as github
+from backend.api.v1.app import github
+
+# import requests as github
 
 
 # import asyncio

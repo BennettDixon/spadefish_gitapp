@@ -3,7 +3,9 @@
 Define a class Repo
 """
 from backend.api.v1.models import BaseModel
-import requests as github
+from backend.api.v1.app import github
+
+#import requests as github
 # from backend.api.v1 import github
 # import requests_async as async_requests
 # import asyncio
