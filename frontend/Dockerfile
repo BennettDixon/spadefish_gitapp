@@ -18,3 +18,4 @@ COPY --from=builder /app/lib/main.js /usr/share/nginx/html/lib/main.js
 COPY --from=builder /app/css/main.css /usr/share/nginx/html/css/main.css
 COPY --from=builder /app/about.html /usr/share/nginx/html/about.html
 COPY --from=builder /app/index.html /usr/share/nginx/html/index.html
+COPY --from=builder /app/images/ /usr/share/nginx/html/images/
