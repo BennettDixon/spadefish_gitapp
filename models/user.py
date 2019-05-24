@@ -5,16 +5,20 @@ Define class User
 
 from models.BaseModel import BaseModel
 from models.repo import Repo
-from api.v1 import portal
 import requests
+import asyncio
+
+# from api.v1 import portal
+
+endpoint = "https://api.github.com"
 
 
 class User(BaseModel):
-    g_id = 0
     g_login = ""
-    g_url = "http://github.com"
-    repos = {}
+    g_home = "http://github.com"
+    __repos = {}
     __lang_metric = {}
+    __is_login = False
 
     def __init__(self, user=None):
         """
@@ -24,16 +28,19 @@ class User(BaseModel):
         """
         if user:
             me = requests.get(
-                f"https://api.github.com/users/{user}/repos"
+                f"{endpoint}/users/{user}"
             ).json()
         else:
             me = portal.get("/user").json()
+            self.__is_login = True
+        print(me)
         data = dict(
-            id=me["id"],
+            id="{}".format(me["id"]),
             g_login=me["login"],
             g_url=me["url"],
-            repos={},
-            lang_metric={}
+            __repos={},
+            __lang_metric={},
+            __is_login=False
         )
         super().__init__(**data)
 
@@ -42,33 +49,59 @@ class User(BaseModel):
         This Method gets the user's repos processes and convert them to Objects
         :return: dictionary of Repo objects
         """
-        resp = self.portal.get("/user/repos").json()
+        if self.is_login:
+            resp = requests.get(f"{endpoint}/user/repos").json()
+        else:
+            resp = requests.get(f"{endpoint}/users/{self.g_login}/repos").json()
+            print(resp[0])
+
         for repo in resp:
             data = dict(
                 id=repo["id"],
                 owner=self.g_login,
                 name=repo["name"],
                 url=repo['html_url'],
-                lang={},
+                __lang={},
                 is_owner=(
                     True if repo['owner']['login'] == self.g_login else False
                 ),
                 is_fork=repo['fork']
             )
-        self.update(data['id'], Repo(**data).get_lang())
+            new_repo = Repo(**data).get_lang()
+            self.__repos.update({f"data['id']": new_repo})
+        print(self.__repos)
 
-    @property
-    def lang_metric(self):
-        if not self.__lang_metric:
-            if not self.repos:
-                self.get_repos()
-            self.sum_lang()
+    def async_get_repos(self):
+        """
+        Async Method gets the user's repos processes and convert them to Objects
+        :return: dictionary of Repo objects
+        """
+        if self.is_login:
+            resp = requests.get(f"{endpoint}/user/repos").json()
+        else:
+            resp = requests.get(f"{endpoint}/users/{self.g_login}/repos").json()
+            print(resp[0])
 
-        return self.__lang_metric
+        asyncio \
+            .get_event_loop() \
+            .run_until_complete(self.__async__get__repo(resp))
 
-    @lang_metric.setter
-    def lang_metric(self, value):
-        self.__lang_metric = value
+    async def __async__get__repo(self, resp=None):
+        await asyncio.sleep(0)
+        async for repo in resp:
+            data = dict(
+                id=repo["id"],
+                owner=self.g_login,
+                name=repo["name"],
+                url=repo['html_url'],
+                __lang={},
+                is_owner=(
+                    True if repo['owner']['login'] == self.g_login else False
+                ),
+                is_fork=repo['fork']
+            )
+            new_repo = Repo(**data).async_get_lang()
+            self.__repos.update({f"data['id']": new_repo})
 
     def sum_lang(self):
         """
@@ -77,7 +110,8 @@ class User(BaseModel):
 
         :return: Sum of all the key value.
         """
-        for repo in self.repos.values():
+        for repo in self.__repos.values():
+            print(repo)
             for k, v in repo.lang.items():
                 if k in self.__lang_metric.keys():
                     self.__lang_metric[k] += v
@@ -86,11 +120,18 @@ class User(BaseModel):
         return self.__lang_metric
 
     @property
+    def repo(self):
+        return self.__repos
+
+    @property
     def lang_metric(self):
         if not self.__lang_metric:
-            if not self.repos:
-                self.get_repos()
+            if not self.__repos:
+                self.async_get_repos()
             self.sum_lang()
 
         return self.__lang_metric
 
+    @property
+    def is_login(self):
+        return self.__is_login

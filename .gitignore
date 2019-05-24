@@ -290,3 +290,5 @@ venv.bak/
 .mypy_cache/
 
 /.env
+
+/.idea/
