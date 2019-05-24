@@ -1,0 +1,6 @@
+# TODO
+FROM nginx:alpine
+
+WORKDIR '/app'
+
+# TODO
