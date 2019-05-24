@@ -23,7 +23,7 @@ class BaseModel:
 
     def __str__(self):
         """String representation of the BaseModel class"""
-        return "[{:s}] ({:s}) {}".format(self.__class__.__name__, self.id,
+        return "[{}] ({}) {}".format(self.__class__.__name__, self.id,
                                          self.to_dict())
 
     def update(self, ignore, *args, **kwargs):
