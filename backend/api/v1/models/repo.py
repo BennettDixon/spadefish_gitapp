@@ -2,7 +2,7 @@
 """
 Define a class Repo
 """
-from backend.api.v1.models import BaseModel
+from backend.api.v1.models.BaseModel import BaseModel
 from backend.api.v1.app import github
 
 #import requests as github

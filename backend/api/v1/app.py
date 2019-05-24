@@ -3,7 +3,7 @@
 """
 from flask import Flask
 from flask import jsonify
-from api.v1.views import app_views
+from backend.api.v1.views import app_views
 import os
 from flask import Flask, redirect, url_for
 from flask_dance.contrib.github import make_github_blueprint, github
@@ -18,7 +18,7 @@ blueprint = make_github_blueprint(
     client_id=client_id,
     client_secret=client_secret,
 )
-#app.register_blueprint(app_views)
+app.register_blueprint(app_views)
 app.register_blueprint(blueprint, url_prefix="/login")
 
 
