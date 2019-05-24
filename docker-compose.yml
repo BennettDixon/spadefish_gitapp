@@ -10,9 +10,9 @@ services:
       - "5005:5000"
     # command: ["ls", "-r"]
     command: ["python3", "-m", "api.v1.app"]
-  frontend:
-    build:
-      context: .
-      dockerfile: Dockerfile.frontend
-    ports:
-      - "8080:8080"
+  #frontend:
+  #  build:
+  #    context: .
+  #    dockerfile: Dockerfile.frontend
+  #  ports:
+  #    - "8080:8080"
