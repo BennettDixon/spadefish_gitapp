@@ -40,3 +40,6 @@ const xScale = d3.scaleBand()
 chart.append('g')
   .attr('transform', `translate(0, ${height})`)
   .call(d3.axisBottom(xScale));
+
+// t drawing rectangles. TODO add more detailed documentation.
+chart.selectAll()
