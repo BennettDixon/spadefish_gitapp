@@ -13,6 +13,8 @@ RUN npm run deploy
 
 # production stage, use the files built
 FROM nginx:alpine
-# TODO fix how its build and copied
-COPY --from=builder /app/lib /user/share/nginx/html/lib
-COPY --from=builder /app/css /user/share/nginx/html/css
+# Copy from builder so only files needed are included in final image
+COPY --from=builder /app/lib/main.js /usr/share/html/lib/main.js
+COPY --from=builder /app/css/main.css /usr/share/html/css/main.css
+COPY --from=builder /app/about.html /usr/share/html/about.html
+COPY --from=builder /app/index.html /usr/share/html/index.html
