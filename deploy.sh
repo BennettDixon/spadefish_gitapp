@@ -1,4 +1,4 @@
-#!usr/bin/env sh
+#!/usr/bin/env sh
 # get the latest updates
 git pull origin master
 # force current containers to stop
