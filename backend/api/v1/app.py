@@ -18,6 +18,7 @@ blueprint = make_github_blueprint(
     client_id=client_id,
     client_secret=client_secret,
 )
+
 # app.register_blueprint(app_views)
 app.register_blueprint(blueprint, url_prefix="/login")
 
@@ -54,6 +55,7 @@ def page_not_found(e):
 @app.route("/logout")
 def logout():
     del app.blueprints['github'].token
+    return jsonify({'hi': 'bennett'})
 
 
 @app.teardown_appcontext
