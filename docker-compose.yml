@@ -16,9 +16,9 @@ services:
       - "5005:5000"
     command: ["python3", "-u", "-m", "api.v1.app"]
     # DEV
-  #frontend:
-  #  build:
-  #    context: ./frontend
-  #    dockerfile: Dockerfile
-  #  ports:
-  #    - "8080:8080"
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
