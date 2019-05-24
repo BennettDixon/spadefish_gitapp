@@ -14,13 +14,13 @@ services:
       - OAUTHLIB_INSECURE_TRANSPORT
     ports:
       - "5005:5005"
-    links:
-      - api
     command: ["python3", "-u", "-m", "api.v1.app"]
     # DEV
   frontend:
     build:
       context: ./frontend
       dockerfile: Dockerfile
+    links:
+      - api:api
     ports:
       - "80:80"
