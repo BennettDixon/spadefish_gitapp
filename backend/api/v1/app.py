@@ -22,10 +22,6 @@ blueprint = make_github_blueprint(
 app.register_blueprint(blueprint, url_prefix="/login")
 
 
-@app.route("/github/authorized")
-def github_login():
-    pass
-
 @app.route("/")
 def home_page():
     return redirect("http://spadefish.holberton.us")
