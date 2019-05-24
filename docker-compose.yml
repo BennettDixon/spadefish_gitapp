@@ -5,8 +5,12 @@ services:
   api:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.backend
     ports:
       - "5005:5000"
     # command: ["ls", "-r"]
     command: ["python3", "-m", "api.v1.app"]
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
