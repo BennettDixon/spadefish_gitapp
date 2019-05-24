@@ -6,10 +6,14 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.backend
+    # TODO should be using secrets not env
+    environment:
+      - GITHUB_OAUTH_CLIENT_ID
+      - GITHUB_OAUTH_CLEINT_SECRET
     ports:
       - "5005:5000"
-    # command: ["ls", "-r"]
-    command: ["python3", "-m", "api.v1.app"]
+    command: ["python3", "-u", "-m", "api.v1.app"]
+    # DEV
   #frontend:
   #  build:
   #    context: .
