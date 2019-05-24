@@ -1,25 +1,31 @@
-async function request() {
+const login = () => {
   $('div.card-content').empty();
-}
+  $.get(`${window.location.hostname}/login`, (data) => {
+    $('div.card-content').append(`<p>${data.login}</p>`);
+    $('button.loginout').text('Logout');
+    $('button.loginout').attr('id', 'logout');
+    $('p.card-header-title').text('github_username');
+    $('h5#sentence').text('Look at you, you polyglot! 🎏');
+  });
+};
 
-async function clear() {
+const logout = () => {
   $('div.card-content').empty();
-}
+  $.get(`${window.location.hostname}/logout`, () => {
+    $('div.card-content').empty();
+    $('button.loginout').text('Login');
+    $('button.loginout').attr('id', 'login');
+    $('p.card-header-title').text('spadefish');
+    $('h5#sentence').text("Let's get swimming. 🐟🐟🐟");
+  });
+};
 
 $('document').ready(() => {
   $('button.loginout').click(function transition() {
     if ($(this).attr('id') === 'login') {
-      request().then(() => {
-        $('div.card-content').append('<svg />');
-        $('button.loginout').text('Logout');
-        $('button.loginout').attr('id', 'logout');
-      });
+      login();
     } else {
-      clear().then(() => {
-        $('div.card-content').append('<svg /></svg>');
-        $('button.loginout').text('Login');
-        $('button.loginout').attr('id', 'login');
-      });
+      logout();
     }
   });
 });

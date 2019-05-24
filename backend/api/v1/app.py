@@ -18,9 +18,8 @@ blueprint = make_github_blueprint(
     client_id=client_id,
     client_secret=client_secret,
 )
-#app.register_blueprint(app_views)
+# app.register_blueprint(app_views)
 app.register_blueprint(blueprint, url_prefix="/login")
-
 
 @app.route("/")
 def home_page():
@@ -36,6 +35,7 @@ def index():
     print(resp.json())
     assert resp.ok
     return jsonify(resp.json())
+
 
 def page_not_found(e):
     """404 error json response"""
