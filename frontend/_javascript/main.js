@@ -30,12 +30,13 @@ const yScale = d3.scaleLinear()
 chart.append('g')
   .call(d3.axisLeft(yScale));
 
-// define split range into bands and 
+// define split range into bands and use lang name as band labels
 const xScale = d3.scaleBand()
   .range([0, width])
   .domain(sample.map((s) => s[0]))
   .padding(0.2)
 
+// create x-axis at the bottom of our chart
 chart.append('g')
   .attr('transform', `translate(0, ${height})`)
   .call(d3.axisBottom(xScale));
