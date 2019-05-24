@@ -25,3 +25,11 @@ $warning: #f8ffd9;
 h6.title {
     text-decoration: underline;
 }
+
+html {
+    background-color: $primary;
+}
+
+.card {
+    border-radius: 20px;
+}
