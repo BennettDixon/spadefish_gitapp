@@ -49,7 +49,6 @@ def page_not_found(e):
 @app.route("/logout")
 def logout():
     del app.blueprints['github'].token
-    return redirect('/')
 
 @app.teardown_appcontext
 def teardown_appcontext(exc=None):
