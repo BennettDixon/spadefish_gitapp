@@ -4,6 +4,7 @@ sudo: required
 
 services:
   - docker
+  - docker-compose
 
 # series of commands exc before tests run
 before_install:
