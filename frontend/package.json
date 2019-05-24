@@ -40,6 +40,9 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-es2015-ie": "^6.7.0",
     "bulma": "^0.7.2",
+    "eslint": "^5.3.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
     "node-sass": "^4.11.0",
     "npm-run-all": "^4.1.5",
     "postcss-cli": "^6.1.1"
@@ -63,9 +66,13 @@
     "css-postcss": "postcss --use autoprefixer --output css/main.css css/main.css",
     "css-watch": "npm run css-build -- --watch",
     "deploy": "npm run css-deploy && npm run js-build",
+    "lint": "eslint _javascript/*",
     "js-build": "babel _javascript --out-dir lib",
     "js-watch": "npm run js-build -- --watch",
     "start": "npm-run-all --parallel css-watch js-watch"
   },
-  "version": "0.0.3"
+  "version": "0.0.3",
+  "dependencies": {
+    "bulma-tooltip": "^2.0.2"
+  }
 }
