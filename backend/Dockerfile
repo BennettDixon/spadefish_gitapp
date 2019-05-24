@@ -10,6 +10,5 @@ RUN pip3 install flask && \
 
 # move backend directory into root of app directory
 # OK b/c backend image contains no frontend code
-COPY ./backend .
+COPY ./ ./
 # copy models into the backend api directory for use
-COPY ./models ./api/v1/models

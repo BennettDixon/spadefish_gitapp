@@ -3,10 +3,10 @@ FROM node:alpine as builder
 # set working directory
 WORKDIR '/app'
 # copy files to build image
-COPY ./frontend/package.json ./
+COPY ./package.json ./
 RUN npm install
 # split run/copy cmds to cache the packages version of the image
-COPY ./frontend ./
+COPY ./ ./
 # run the npm deploy script in package.json
 RUN npm run deploy
 
