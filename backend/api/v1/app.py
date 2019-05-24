@@ -33,9 +33,14 @@ def index():
         return redirect(url_for("github.login"))
     resp = github.get("/user")
     print(resp.json())
-    assert resp.ok
+    #  assert resp.ok
     return jsonify(resp.json())
 
+@app.route("/status")
+def status():
+    if not github.authorized:
+        return jsonify({'status': false})
+    return jsonify({'status': true})
 
 def page_not_found(e):
     """404 error json response"""
