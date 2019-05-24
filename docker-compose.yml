@@ -1,0 +1,18 @@
+# docker-compose up --build
+# in order to add latest changes to the img
+version: "3"
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    ports:
+      - "5005:5000"
+    # command: ["ls", "-r"]
+    command: ["python3", "-m", "api.v1.app"]
+  #frontend:
+  #  build:
+  #    context: .
+  #    dockerfile: Dockerfile.frontend
+  #  ports:
+  #    - "8080:8080"

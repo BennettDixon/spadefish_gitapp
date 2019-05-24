@@ -1,0 +1,5 @@
+Docker forwarded ports:
+api backend container port 5000 forwarded to host 5005
+TODO CHANGE TO 5005->5005
+
+frontend container of nginx 8080->8080 on host 
