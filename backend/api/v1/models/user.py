@@ -3,8 +3,8 @@
 Define class User
 """
 
-from models.BaseModel import BaseModel
-from models.repo import Repo
+from backend.api.v1.models import BaseModel
+from backend.api.v1.models import Repo
 import requests
 import asyncio
 

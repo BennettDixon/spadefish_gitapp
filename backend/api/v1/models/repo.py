@@ -2,7 +2,7 @@
 """
 Define a class Repo
 """
-from models.BaseModel import BaseModel
+from backend.api.v1.models import BaseModel
 import requests_async as async_requests
 import requests
 import asyncio

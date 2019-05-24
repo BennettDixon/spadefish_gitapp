@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import unittest
-from models.user import User
+from backend.api.v1.models import User
 
 
 class TestUsers(unittest.TestCase):
