@@ -7,7 +7,7 @@ COPY ./package.json ./
 RUN npm install
 # split run/copy cmds to cache the packages version of the image
 COPY ./ ./
-COPY /etc/nginx/sites-available/default ./nginx_conf
+COPY /config/nginx_conf ./nginx_conf
 # run the npm deploy script in package.json
 RUN npm run deploy
 
