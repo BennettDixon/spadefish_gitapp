@@ -25,7 +25,7 @@ $ sudo apt-get install python3
 ```
 
 ## :blue_book: Authors
-* **Brennan Baraban** - [@bdbaraban](https://github.com/bdbaraban)
+* **Brennan D Baraban** - [@bdbaraban](https://github.com/bdbaraban)
 * **Christopher Choe** - [@christopherchoe](https://github.com/christopherchoe)
 * **Angie Delgado** - [@seleniaselgado](https://github.com/seleniadelgado)
 * **Bennett Dixon** - [@BennettDixon](https://github.com/BennettDixon)
