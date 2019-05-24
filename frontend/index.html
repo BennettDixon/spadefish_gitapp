@@ -10,6 +10,7 @@
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script type="text/javascript" src="lib/main.js"></script>
+    <script type="text/javascript" src="lib/card.js"></script>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <!-- Bulma CSS -->
@@ -47,10 +48,32 @@
       <!-- Center content -->
       <div class="hero-body">
         <div class="container has-text-centered">
-          <h1 class="title is-1">Welcome to spadefish! 🐠</h1>
-          <h3 class="title is-3">Let's get swimming. 🐟🐟🐟</h3>
-          <div class="bar-chart">
-            <svg />
+          <div class="column is-three-fifths is-offset-one-fifth has-text-centered">
+            <div class="card">
+              <div class="card-header">
+                <div class="card-image has-text-centered">
+                  <object class="image is-32x32"
+                        data="images/logo.svg"
+                        type="image/svg+xml"></object>
+                </div>
+                <p class="card-header-title">
+                  spadefish
+                </p>
+              </div>
+              <div class="card-content">
+                <div class="bar-chart">
+                  <svg />
+                </div>
+              </div>
+              <div class="card-footer">
+                <div class="card-footer-item">
+                  <button class="button loginout" id="login">Login</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="column">
+            <h5 class="title is-5">Let's get swimming. 🐟🐟🐟</h5>
           </div>
         </div>
       </div>
