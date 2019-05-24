@@ -12,5 +12,3 @@ RUN pip3 install flask && \
 COPY ./backend .
 # copy models into the backend api directory for use
 COPY ./models ./api/v1/models
-
-CMD ["python3", "-m", "api.v1.app"]
