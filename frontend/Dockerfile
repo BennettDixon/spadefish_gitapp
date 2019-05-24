@@ -14,6 +14,7 @@ RUN npm run deploy
 
 # production stage, use the files built
 FROM nginx:alpine
+EXPOSE 80
 # Copy from builder so only files needed are included in final image
 COPY --from=builder /app/lib/ /usr/share/nginx/html/lib/
 COPY --from=builder /app/css/main.css /usr/share/nginx/html/css/main.css
