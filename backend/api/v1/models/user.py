@@ -3,9 +3,10 @@
 Define class User
 """
 
-from backend.api.v1.models.BaseModel import BaseModel
-from backend.api.v1.models.repo import Repo
-from backend.api.v1.app import github
+from api.v1.models.BaseModel import BaseModel
+from api.v1.models.repo import Repo
+from api.v1.app import github
+
 
 # import requests as github
 
@@ -26,9 +27,7 @@ class User(BaseModel):
         :param user: optional param for check another users metrics on github
         """
         if user:
-            me = github.get(
-                f"/users/{user}"
-            ).json()
+            me = github.get("/users/{}".format(user)).json()
         else:
             me = github.get("/user").json()
             self.__is_login = True
@@ -36,9 +35,7 @@ class User(BaseModel):
             id=me['id'],
             g_login=me["login"],
             g_url=me["url"],
-            __repos={},
-            __lang_metric={},
-            __is_login=False
+            repos={},
         )
         super().__init__(**data)
 
@@ -47,11 +44,12 @@ class User(BaseModel):
         This Method gets the user's repos processes and convert them to Objects
         :return: dictionary of Repo objects
         """
+        temp_d = {}
         if self.is_login:
             resp = github.get("/user/repos").json()
         else:
-            resp = github.get(f"/users/{self.g_login}/repos").json()
-
+            resp = github.get("/users/{}/repos".format(self.g_login)).json()
+            # print(resp)
         for repo in resp:
             data = dict(
                 id=repo["id"],
@@ -64,9 +62,9 @@ class User(BaseModel):
                 ),
                 is_fork=repo["fork"]
             )
-            new_repo = Repo(**data).get_lang()
-            self.__repos.update({f"{data['id']}": new_repo})
-        print(self.__repos)
+            new_repo = Repo(**data)
+            temp_d.update({"{}".format(data['id']): new_repo.to_dict()})
+        self.__repos = temp_d
 
     def sum_lang(self):
         """
@@ -75,14 +73,19 @@ class User(BaseModel):
 
         :return: Sum of all the key value.
         """
+        temp_d = {}
         for repo in self.__repos.values():
-            print(repo)
-            for k, v in repo.lang.items():
+            # print(repo)
+            for k, v in repo["__lang"].items():
                 if k in self.__lang_metric.keys():
-                    self.__lang_metric[k] += v
+                    temp_d[k] += v
                 else:
-                    self.__lang_metric[k] = v
-        return self.__lang_metric
+                    temp_d[k] = v
+        print(temp_d)
+        self.__lang_metric = temp_d
+
+
+
 
     @property
     def repo(self):

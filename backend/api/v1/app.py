@@ -18,6 +18,7 @@ blueprint = make_github_blueprint(
     client_id=client_id,
     client_secret=client_secret,
 )
+
 # app.register_blueprint(app_views)
 app.register_blueprint(blueprint, url_prefix="/login")
 
