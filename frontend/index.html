@@ -5,8 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>SpadeFish</title>
+    <title>spadefish</title>
 
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script type="text/javascript" src="lib/main.js"></script>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <!-- Bulma CSS -->
@@ -15,62 +18,93 @@
 
   <body>
     <section class="hero is-primary is-fullheight">
+
+      <!-- Header navbar -->
       <div class="hero-head">
         <header class="navbar">
           <div class="container">
+
+            <!-- Top left logo -->
             <div class="navbar-brand">
-              <object class="navbar-item image is-96x96" data="logo_vector.svg" type="image/svg+xml"></object>
-              <p class="navbar-item title is-5 has-text-white">spadefish</p>
+              <object class="navbar-item image is-64x64"
+                      data="images/logo.svg"
+                      type="image/svg+xml"></object>
+              <p class="navbar-item is-size-5 has-text-white">spadefish</p>
             </div>
+
+            <!-- Top right home/about tabs -->
             <div id="navbarMenuHeroC" class="navbar-menu">
               <div class="navbar-end">
-                <a class="navbar-item is-active is-vcentered">Home</a>
-                <a class="navbar-item is-vcentered">About</a>
-                <span class="navbar-item">
-                  <a class="button is-primary is-inverted"
-                     src="https://twitter.com/fish_spade"
-                     target="_blank"
-                     aria-label="Link to Twitter">
-                    <span class="icon">
-                      <i class="fab fa-twitter"></i>
-                    </span>
-                    <span>Twitter</span>
-                  </a>
-                </span>
-                <span class="navbar-item">
-                  <a class="button is-primary is-inverted"
-                     src="">
-                    <span class="icon">
-                      <i class="fab fa-facebook"></i>
-                    </span>
-                    <span>Facebook</span>
-                  </a>
-                </span>
-                <span class="navbar-item">
-                  <a class="button is-primary is-inverted"
-                     src="https://github.com/BennettDixon/spadefish_gitapp"
-                     target="_blank"
-                     aria-label="Link to SpadeFish GitHub">
-                    <span class="icon">
-                      <i class="fab fa-github"></i>
-                    </span>
-                    <span>GitHub</span>
-                  </a>
-                </span>
+                <a href="index.html" class="navbar-item is-vcentered is-active">Home</a>
+                <a href="about.html" class="navbar-item is-vcentered">About</a>
               </div>
             </div>
+
           </div>
         </header>
       </div>
 
+      <!-- Center content -->
       <div class="hero-body">
         <div class="container has-text-centered">
-          <h1 class="title is-1">Welcome to SpadeFish! 🐠</h1>
+          <h1 class="title is-1">Welcome to spadefish! 🐠</h1>
           <h3 class="title is-3">Let's get swimming. 🐟🐟🐟</h3>
         </div>
       </div>
-      <div class="hero-foot"></div>
+
+      <!-- Bottom footer bar -->
+      <div class="hero-foot">
+        <div class="container is-flex">
+
+          <!-- Bottom left statement -->
+          <div class="column">
+            <div class="content">
+                Joyfully developed by the distractingly-attractive spadefish team.
+            </div>
+          </div>
+
+          <!-- Bottom right button row -->
+          <div class="columns">
+            <div class="column">
+              <a class="button tooltip is-primary is-inverted"
+                 href="https://twitter.com/fish_spade?ref_src=twsrc%5Etfw"
+                 data-tooltip="Followers"
+                 target="_blank"
+                 aria-label="Link to spadefish Twitter account">
+                <span class="icon">
+                  <i class="fab fa-twitter"></i>
+                </span>
+                <span>Twitter</span>
+              </a>
+            </div>
+            <div class="column">
+              <a class="button is-primary is-inverted"
+                 href="https://www.facebook.com/SpadeFish-330606224297751/?modal=admin_todo_tour"
+                 target="_blank"
+                 aria-label="Link to spadefish Facebook page">
+                <span class="icon">
+                  <i class="fab fa-facebook"></i>
+                </span>
+                <span>Facebook</span>
+              </a>
+            </div>
+            <div class="column">
+              <a class="button is-primary is-inverted"
+                 href="https://github.com/BennettDixon/spadefish_gitapp"
+                 target="_blank"
+                 aria-label="Link to spadefish GitHub repo">
+                <span class="icon">
+                  <i class="fab fa-github"></i>
+                </span>
+                <span>GitHub</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
     </section>
-    <script type="text/javascript" src="lib/main.js"></script>
   </body>
+
 </html>
