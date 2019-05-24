@@ -23,19 +23,19 @@ class Repo(BaseModel):
     __etag = ""
 
     def __init__(self, **kwargs):
-        kwargs["__lang"] = self.get_lang()
+        self.get_lang(kwargs["owner"], kwargs["name"])
+        kwargs["__lang"] = self.lang
         super().__init__(**kwargs)
 
     @property
     def lang(self):
         return self.__lang
 
-    def get_lang(self):
-        resp = github.get(
-            "/repos/{}/{}/languages".format(self.owner, self.name)
-        )
+    def get_lang(self, owner, name):
+        resp = github.get("/repos/{}/{}/languages".format(owner, name))
+        # print(resp.url)
         self.__etag = resp.headers.get("Etag", "")
-        return resp.json()
+        self.__lang = resp.json()
 
     # def async_get_lang(self):
     #     """

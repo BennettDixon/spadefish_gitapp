@@ -10,11 +10,22 @@ import json
 import requests
 
 @app_views.route(
-    "/user",
+    "/me",
     methods=["GET"],
     strict_slashes=False
 )
-def get_user():
+def get_me():
     usr = User()
-    usr.get_repos()
+    # usr.lang_metric()
+    usr.lang_metric
+    return jsonify(usr.to_dict())
+
+@app_views.route(
+    "/users/<name>",
+    methods=["GET"],
+    strict_slashes=False
+)
+def get_user(name=None):
+    usr = User(name)
+    usr.lang_metric
     return jsonify(usr.to_dict())
