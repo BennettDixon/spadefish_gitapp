@@ -64,7 +64,7 @@ const login = () => {
 
   verify().then(verify().then(() => {
     $.get('/api/v1/me', (data) => {
-      $('div.card-content').append('<div class="bar-chart" style="width: 750px; height: 600px; margin: auto; background-color: #3A99AD;"><svg style="width: 100%; height: 100%;"/></div>');
+      $('div.card-content').append('<div class="bar-chart" style="width: 950px; height: 600px; margin: auto; background-color: #3A99AD;"><svg style="width: 100%; height: 100%;"/></div>');
       barChart(data.lang_metric);
       $('button.loginout').text('Logout');
       $('button.loginout').attr('id', 'logout');
