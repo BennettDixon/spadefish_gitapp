@@ -2,9 +2,9 @@
 """
 Handles Getting User info.
 """
-from backend.api.v1.views import app_views
-from backend.api.v1.models.user import User
-from backend.api.v1.app import github
+from api.v1.views import app_views
+from api.v1.models.user import User
+from api.v1.app import github
 from flask import Flask, jsonify, request, abort
 import json
 import requests

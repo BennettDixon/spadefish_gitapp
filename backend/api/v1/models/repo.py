@@ -2,11 +2,12 @@
 """
 Define a class Repo
 """
-from backend.api.v1.models.BaseModel import BaseModel
-from backend.api.v1.app import github
+from api.v1.models.BaseModel import BaseModel
+from api.v1.app import github
 
-#import requests as github
-# from backend.api.v1 import github
+
+# import requests as github
+# from app.api.v1 import github
 # import requests_async as async_requests
 # import asyncio
 
@@ -31,7 +32,7 @@ class Repo(BaseModel):
 
     def get_lang(self):
         resp = github.get(
-            f"/repos/{self.owner}/{self.name}/languages"
+            "/repos/{}/{}/languages".format(self.owner, self.name)
         )
         self.__etag = resp.headers.get("Etag", "")
         return resp.json()

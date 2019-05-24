@@ -3,7 +3,7 @@
 """
 from flask import Flask
 from flask import jsonify
-from backend.api.v1.views import app_views
+from api.v1.views import app_views
 import os
 from flask import Flask, redirect, url_for
 from flask_dance.contrib.github import make_github_blueprint, github

@@ -3,9 +3,10 @@
 Define class User
 """
 
-from backend.api.v1.models.BaseModel import BaseModel
-from backend.api.v1.models.repo import Repo
-from backend.api.v1.app import github
+from api.v1.models.BaseModel import BaseModel
+from api.v1.models.repo import Repo
+from api.v1.app import github
+
 
 # import requests as github
 
@@ -26,9 +27,7 @@ class User(BaseModel):
         :param user: optional param for check another users metrics on github
         """
         if user:
-            me = github.get(
-                f"/users/{user}"
-            ).json()
+            me = github.get("/users/{}".format(user)).json()
         else:
             me = github.get("/user").json()
             self.__is_login = True
@@ -50,7 +49,7 @@ class User(BaseModel):
         if self.is_login:
             resp = github.get("/user/repos").json()
         else:
-            resp = github.get(f"/users/{self.g_login}/repos").json()
+            resp = github.get("/users/{}/repos".format(self.g_login)).json()
 
         for repo in resp:
             data = dict(
@@ -65,7 +64,7 @@ class User(BaseModel):
                 is_fork=repo["fork"]
             )
             new_repo = Repo(**data).get_lang()
-            self.__repos.update({f"{data['id']}": new_repo})
+            self.__repos.update({"{}".format(data['id']): new_repo})
         print(self.__repos)
 
     def sum_lang(self):
