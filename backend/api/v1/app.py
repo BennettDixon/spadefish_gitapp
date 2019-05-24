@@ -21,9 +21,11 @@ blueprint = make_github_blueprint(
 # app.register_blueprint(app_views)
 app.register_blueprint(blueprint, url_prefix="/login")
 
+
 @app.route("/")
 def home_page():
     return redirect("http://spadefish.holberton.us")
+
 
 @app.route("/login")
 def index():
@@ -36,19 +38,23 @@ def index():
     #  assert resp.ok
     return jsonify(resp.json())
 
+
 @app.route("/status")
 def status():
     if not github.authorized:
-        return jsonify({'status': false})
-    return jsonify({'status': true})
+        return jsonify({'status': False})
+    return jsonify({'status': True})
+
 
 def page_not_found(e):
     """404 error json response"""
     return jsonify({'error': "Not found"}), 404
 
+
 @app.route("/logout")
 def logout():
     del app.blueprints['github'].token
+
 
 @app.teardown_appcontext
 def teardown_appcontext(exc=None):
