@@ -8,12 +8,15 @@ import os
 from flask import Flask, redirect, url_for
 from flask_dance.contrib.github import make_github_blueprint, github
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
+client_id = os.getenv('GITHUB_OAUTH_CLIENT_ID')
+client_secret = os.getenv('GITHUB_OAUTH_CLIENT_SECRET')
+
 
 app = Flask(__name__)
 app.secret_key = "supersekrit"  # Replace this with your own secret!
 blueprint = make_github_blueprint(
-    client_id="clid",
-    client_secret="c-sercred",
+    client_id=client_id,
+    client_secret=client_secret,
 )
 #app.register_blueprint(app_views)
 app.register_blueprint(blueprint, url_prefix="/login")

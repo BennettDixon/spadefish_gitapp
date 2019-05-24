@@ -9,7 +9,7 @@ services:
     # TODO should be using secrets not env
     environment:
       - GITHUB_OAUTH_CLIENT_ID
-      - GITHUB_OAUTH_CLEINT_SECRET
+      - GITHUB_OAUTH_CLIENT_SECRET
       # Set to one for local testing
       - OAUTHLIB_INSECURE_TRANSPORT
     ports:
