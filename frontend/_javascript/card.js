@@ -1,6 +1,6 @@
 const login = () => {
   $('div.card-content').empty();
-  $.get(`${window.location.hostname}/login`, (data) => {
+  $.get('/login', (data) => {
     $('div.card-content').append(`<p>${data.login}</p>`);
     $('button.loginout').text('Logout');
     $('button.loginout').attr('id', 'logout');
@@ -11,7 +11,7 @@ const login = () => {
 
 const logout = () => {
   $('div.card-content').empty();
-  $.get(`${window.location.hostname}/logout`, () => {
+  $.get('/logout', () => {
     $('div.card-content').empty();
     $('button.loginout').text('Login');
     $('button.loginout').attr('id', 'login');
