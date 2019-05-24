@@ -18,13 +18,14 @@ blueprint = make_github_blueprint(
     client_id=client_id,
     client_secret=client_secret,
 )
-#app.register_blueprint(app_views)
+# app.register_blueprint(app_views)
 app.register_blueprint(blueprint, url_prefix="/login")
 
 
 @app.route("/github/authorized")
 def gegdg():
     pass
+
 
 @app.route("/")
 def index():
@@ -33,6 +34,7 @@ def index():
     resp = github.get("/user/repos")
     assert resp.ok
     return jsonify(resp.json())
+
 
 def page_not_found(e):
     """404 error json response"""
@@ -56,5 +58,5 @@ if __name__ == "__main__":
     if fetched_host is None:
         fetched_host = '0.0.0.0'
     if fetched_port is None:
-        fetched_port = 5000
+        fetched_port = 5005
     app.run(host=fetched_host, port=fetched_port, threaded=True)
