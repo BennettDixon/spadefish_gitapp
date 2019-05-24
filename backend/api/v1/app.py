@@ -5,9 +5,31 @@ from flask import Flask
 from flask import jsonify
 from api.v1.views import app_views
 import os
+from flask import Flask, redirect, url_for
+from flask_dance.contrib.github import make_github_blueprint, github
+os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 
 app = Flask(__name__)
-app.register_blueprint(app_views)
+app.secret_key = "supersekrit"  # Replace this with your own secret!
+blueprint = make_github_blueprint(
+    client_id="clid",
+    client_secret="c-sercred",
+)
+#app.register_blueprint(app_views)
+app.register_blueprint(blueprint, url_prefix="/login")
+
+
+@app.route("/github/authorized")
+def gegdg():
+    pass
+
+@app.route("/")
+def index():
+    if not github.authorized:
+        return redirect(url_for("github.login"))
+    resp = github.get("/user/repos")
+    assert resp.ok
+    return jsonify(resp.json())
 
 def page_not_found(e):
     """404 error json response"""
