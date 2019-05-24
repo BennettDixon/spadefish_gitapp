@@ -11,6 +11,7 @@ $primary: #3a99ad;
 $warning: #f8ffd9;
 
 @import "../node_modules/bulma/bulma";
+@import "../node_modules/bulma-tooltip/src/sass/index.sass";
 
 /* Centering bottom left footer statement in line with button row */
 .hero-foot > div > div {
