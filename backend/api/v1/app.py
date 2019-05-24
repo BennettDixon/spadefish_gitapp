@@ -1,18 +1,34 @@
 #!/usr/bin/python3
 """main app file for Flask instance in REST API
 """
-from flask import Flask
+from flask import Flask, render_template, redirect, url_for
 from flask import jsonify
+from flask_dance.contrib.github import make_github_blueprint, github
 from api.v1.views import app_views
 import os
 
 app = Flask(__name__)
 app.register_blueprint(app_views)
+app.secret_key='justatest'
+
+client_id = os.getenv('GITHUB_OAUTH_CLIENT_ID')
+client_secret = os.getenv('GITHUB_OAUTH_CLIENT_SECRET')
+
+blueprint = make_github_blueprint(client_id=client_id, client_secret=client_secret)
+
+app.register_blueprint(blueprint, url_prefix='/login')
+
+@app.route('/login')
+def index():
+    if not github.authorized:
+        return redirect(url_for("github.login"))
+    account_info=github.get("/user")
+    assert account_info.ok
+    return "hi"
 
 def page_not_found(e):
     """404 error json response"""
     return jsonify({'error': "Not found"}), 404
-
 
 @app.teardown_appcontext
 def teardown_appcontext(exc=None):
