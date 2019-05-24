@@ -9,9 +9,9 @@ const barChart = () => {
   sample = Object.keys(sample).map(key => [key, sample[key]]);
 
   // chart with 1000px width and 600px height, with 80px margin
-  const margin = 25;
-  const width = 250 - 2 * margin;
-  const height = 155 - 2 * margin;
+  const margin = 80;
+  const width = 1000 - 2 * margin;
+  const height = 600 - 2 * margin;
 
   // select svg and then pad with margin value to define chart canvas
   const svg = d3.select('div.bar-chart svg');
@@ -38,34 +38,4 @@ const barChart = () => {
     .call(d3.axisBottom(xScale));
 };
 
-const login = () => {
-  $('div.card-content').empty();
- // $.get('/login', (data) => {
-  $('div.card-content').append('<div class="bar-chart"><svg /></div>');
-  barChart();
-  $('button.loginout').text('Logout');
-  $('button.loginout').attr('id', 'logout');
-  $('p.card-header-title').text('github_username');
-  $('h5#sentence').text('Look at you, you polyglot! 🎏');
-//  });
-};
-
-const logout = () => {
-  $('div.card-content').empty();
-  //$.get('/logout', () => {
-    $('button.loginout').text('Login');
-    $('button.loginout').attr('id', 'login');
-    $('p.card-header-title').text('spadefish');
-    $('h5#sentence').text("Let's get swimming. 🐟🐟🐟");
- // });
-};
-
-$('document').ready(() => {
-  $('button.loginout').click(function transition() {
-    if ($(this).attr('id') === 'login') {
-      login();
-    } else {
-      logout();
-    }
-  });
-});
+export default barChart;
