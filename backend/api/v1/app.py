@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """main app file for Flask instance in REST API
 """
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, request, render_template, redirect, url_for
 from flask import jsonify
 from flask_dance.contrib.github import make_github_blueprint, github
 from api.v1.views import app_views
@@ -18,13 +18,30 @@ blueprint = make_github_blueprint(client_id=client_id, client_secret=client_secr
 
 app.register_blueprint(blueprint, url_prefix='/login')
 
-@app.route('/login')
+@app.route('/')
 def index():
+    print('hi')
     if not github.authorized:
+        print('notauthorized')
         return redirect(url_for("github.login"))
-    account_info=github.get("/user")
-    assert account_info.ok
-    return "hi"
+    git_obj=github.get("/user")
+    print('this is the git_obj {}'.format(git_obj))
+    assert git_obj.ok
+    print(git_obj.json())
+    return jsonify("{}".format(git_obj.json()))
+
+@app.route('/authenticated')
+def hello():
+    print('this hello hi')
+    git_obj=github.get("/user")
+    print('this is the git_obj {}'.format(git_obj))
+    assert git_obj.ok
+    print(git_obj.json())
+    return jsonify("{}".format(git_obj.json()))
+    print(request.data)
+    content = request.get_json()
+    print(content)
+    return content
 
 def page_not_found(e):
     """404 error json response"""
