@@ -21,17 +21,18 @@ blueprint = make_github_blueprint(
 # app.register_blueprint(app_views)
 app.register_blueprint(blueprint, url_prefix="/login")
 
-
-@app.route("/github/authorized")
-def gegdg():
-    pass
-
-
 @app.route("/")
+def home_page():
+    return redirect("http://spadefish.holberton.us")
+
+@app.route("/login")
 def index():
+    print('am i authorized {}'.format(github.authorized))
     if not github.authorized:
+        print(url_for("github.login"))
         return redirect(url_for("github.login"))
-    resp = github.get("/user/repos")
+    resp = github.get("/user")
+    print(resp.json())
     assert resp.ok
     return jsonify(resp.json())
 
@@ -40,6 +41,10 @@ def page_not_found(e):
     """404 error json response"""
     return jsonify({'error': "Not found"}), 404
 
+@app.route("/logout")
+def logout():
+    del app.blueprints['github'].token
+    return redirect('/')
 
 @app.teardown_appcontext
 def teardown_appcontext(exc=None):
