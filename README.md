@@ -31,7 +31,7 @@ $ sudo apt-get install python3
 * **Christopher Choe** - [@christopherchoe](https://github.com/christopherchoe)
 * **Angie Delgado** - [@seleniadelgado](https://github.com/seleniadelgado)
 * **Bennett Dixon** - [@BennettDixon](https://github.com/BennettDixon)
-* **Jack Gindi** - [@jmindi](https://github.com/jmgindi)
+* **Jack Gindi** - [@jmgindi](https://github.com/jmgindi)
 * **Fernando Gonzalez-Morales** - [@fgonza52](https://github.com/fgonza52)
 * **Wescott Sharples** - [@wescottsharples](https://github.com/wescottsharples)
 * **Martin Smith** - [@Ostoyae](https://github.com/Ostoyae)
