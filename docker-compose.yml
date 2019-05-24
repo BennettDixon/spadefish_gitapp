@@ -13,12 +13,14 @@ services:
       # Set to one for local testing
       - OAUTHLIB_INSECURE_TRANSPORT
     ports:
-      - "5005:5000"
+      - "5005:5005"
     command: ["python3", "-u", "-m", "api.v1.app"]
     # DEV
   frontend:
     build:
       context: ./frontend
       dockerfile: Dockerfile
+    links:
+      - api:api
     ports:
-      - "8080:8080"
+      - "80:80"

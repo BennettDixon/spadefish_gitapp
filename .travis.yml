@@ -1,0 +1,15 @@
+# currently docker daemon needs sudo
+# as of version 18.06
+sudo: required
+
+services:
+  - docker
+  - docker-compose
+
+# series of commands exc before tests run
+before_install:
+  - echo 'before_install'
+
+script:
+  - docker-compose up --build -d
+  # - docker run bennettdixon16/spadefish_gitapp python3 -m api.v1.tests.test_base_model

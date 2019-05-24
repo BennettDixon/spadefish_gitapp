@@ -8,6 +8,7 @@ RUN pip3 install flask && \
     pip3 install requests && \
     pip3 install Flask-Dance
 
+EXPOSE 5005
 # move backend directory into root of app directory
 # OK b/c backend image contains no frontend code
 COPY ./ ./

@@ -18,25 +18,43 @@ blueprint = make_github_blueprint(
     client_id=client_id,
     client_secret=client_secret,
 )
-app.register_blueprint(app_views)
+
+# app.register_blueprint(app_views)
 app.register_blueprint(blueprint, url_prefix="/login")
 
 
-@app.route("/github/authorized")
-def gegdg():
-    pass
-
 @app.route("/")
+def home_page():
+    return redirect("http://spadefish.holberton.us")
+
+
+@app.route("/login")
 def index():
+    print('am i authorized {}'.format(github.authorized))
     if not github.authorized:
+        print(url_for("github.login"))
         return redirect(url_for("github.login"))
-    resp = github.get("/user/repos")
-    assert resp.ok
+    resp = github.get("/user")
+    print(resp.json())
+    #  assert resp.ok
     return jsonify(resp.json())
+
+
+@app.route("/status")
+def status():
+    if not github.authorized:
+        return jsonify({'status': False})
+    return jsonify({'status': True})
+
 
 def page_not_found(e):
     """404 error json response"""
     return jsonify({'error': "Not found"}), 404
+
+
+@app.route("/logout")
+def logout():
+    del app.blueprints['github'].token
 
 
 @app.teardown_appcontext
@@ -56,5 +74,5 @@ if __name__ == "__main__":
     if fetched_host is None:
         fetched_host = '0.0.0.0'
     if fetched_port is None:
-        fetched_port = 5000
+        fetched_port = 5005
     app.run(host=fetched_host, port=fetched_port, threaded=True)
