@@ -1,16 +1,6 @@
-##
-# You should look at the following URL's in order to grasp a solid understanding
-# of Nginx configuration files in order to fully unleash the power of Nginx.
-# http://wiki.nginx.org/Pitfalls
-# http://wiki.nginx.org/QuickStart
-# http://wiki.nginx.org/Configuration
-#
-# Generally, you will want to move this file somewhere, and start with a clean
-# file but keep this around for reference. Or just disable in sites-enabled.
-#
-# Please see /usr/share/doc/nginx-doc/examples/ for more detailed examples.
-##
-
+upstream backend {
+    server 0.0.0.0:5005;
+}
 # Default server configuration
 #
 server {
@@ -46,10 +36,10 @@ server {
 	}
 
 	location /login {
-		proxy_pass http://api/login;
+		proxy_pass http://backend/login;
 	}
 
 	location /logout {
-		proxy_pass http://api/logout;
+		proxy_pass http://backend/logout;
 	}
 }
