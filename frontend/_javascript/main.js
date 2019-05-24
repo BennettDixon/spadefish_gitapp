@@ -20,3 +20,22 @@ const height = 600 - 2 * margin;
 // select svg and then pad with margin value to define chart canvas
 const svg = d3.select('div.bar-chart svg');
 const chart = svg.append('g').attr('transform', `translate(${margin}, ${margin})`);
+
+// define linear scale from 0 to 100 for percentages
+const yScale = d3.scaleLinear()
+  .range([height, 0])
+  .domain([0, 100]);
+
+// create y-axis on the left
+chart.append('g')
+  .call(d3.axisLeft(yScale));
+
+// define split range into bands and 
+const xScale = d3.scaleBand()
+  .range([0, width])
+  .domain(sample.map((s) => s[0]))
+  .padding(0.2)
+
+chart.append('g')
+  .attr('transform', `translate(0, ${height})`)
+  .call(d3.axisBottom(xScale));
