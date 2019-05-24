@@ -7,8 +7,8 @@ services:
 
 # series of commands exc before tests run
 before_install:
-  - docker build -t bennettdixon16/spadefish_gitapp ./
+  - echo 'before_install'
 
 script:
-  - echo 'testing'
+  - docker-compose up --build -d
   # - docker run bennettdixon16/spadefish_gitapp python3 -m api.v1.tests.test_base_model
