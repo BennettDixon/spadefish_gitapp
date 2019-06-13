@@ -1,6 +1,8 @@
-# :shell: Spadefish - Visualize Your Git Programming Language Frequency :shell:
+# :fish: Spadefish :fish:
 
 Spadefish is a web application that was developed in 24 hours by a team of seven engineering students at Holberton School. In this time we built a working frontend and backend, as well as deployed it to the cloud using a dockerized enviornment running on an Ubuntu VM.
+
+Spadefish is a tool to create a graph based on your github activity. Using Github OAUTH we connect with your github and pull information regarding your language commit history. We then format this data into a graph for the user to see.
 
 ## :running: Getting Started
 
