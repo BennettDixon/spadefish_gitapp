@@ -1,6 +1,6 @@
-# :shell: TODO :shell:
+# :shell: Spadefish - Visualize Your Git Programming Language Frequency :shell:
 
-TODO
+Spadefish is a web application that was developed in 24 hours by a team of seven engineering students at Holberton School. In this time we built a working frontend and backend, as well as deployed it to the cloud using a dockerized enviornment running on an Ubuntu VM.
 
 ## :running: Getting Started
 
