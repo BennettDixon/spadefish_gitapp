@@ -36,7 +36,7 @@ $ sudo apt-get install python3
 * **Jack Gindi** - [@jmgindi](https://github.com/jmgindi)
 * **Fernando Gonzalez-Morales** - [@fgonza52](https://github.com/fgonza52)
 * **Wescott Sharples** - [@wescottsharples](https://github.com/wescottsharples)
-* **Martin Smith** - [@Ostoyae](https://github.com/Ostoyae)
+* **Martin Smith** - [@Hraesvel](https://github.com/Hraesvel)
 * **Alex Yu** - [@AlexYu01](https://github.com/AlexYu01)
 
 ## :mag: License
